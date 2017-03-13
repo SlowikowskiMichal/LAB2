@@ -1,4 +1,5 @@
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -19,16 +20,22 @@ public class Activity implements Print{
         assignedStudents.add(student);
     }
 
-    @Override
-    public void print() {
-   //     System.out.println("Nazwa zajęć: " + name);
-    //    System.out.println("Uczęszczający uczniowie:");
-    //    for(int i = 0; i < assignedStudents.size(); i++)
-    //        System.out.println(assignedStudents.toArray()[i].);
+    public Set<Student> getAssignedStudents()
+    {
+         return assignedStudents;
     }
 
     String getName()
     {
         return name;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("Zajęcie: " + name);
+        for (Iterator<Student> it = assignedStudents.iterator(); it.hasNext(); ) {
+            Student f = it.next();
+            f.print();
+        }
     }
 }
